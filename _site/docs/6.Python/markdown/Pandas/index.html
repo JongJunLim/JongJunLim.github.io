@@ -1,0 +1,855 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><link rel="stylesheet" href="/assets/css/just-the-docs-default.css"> <script src="/assets/js/vendor/lunr.min.js"></script> <script src="/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico" type="image/x-icon"><title>Pandas | JayJay’s Archive</title><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="Pandas" /><meta property="og:locale" content="en_US" /><meta name="description" content="Data Analyst" /><meta property="og:description" content="Data Analyst" /><link rel="canonical" href="http://localhost:4000/docs/6.Python/markdown/Pandas/" /><meta property="og:url" content="http://localhost:4000/docs/6.Python/markdown/Pandas/" /><meta property="og:site_name" content="JayJay’s Archive" /><meta property="og:type" content="website" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Pandas" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"Data Analyst","headline":"Pandas","url":"http://localhost:4000/docs/6.Python/markdown/Pandas/"}</script><body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"><title>Link</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"><title>Menu</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"><title>Expand</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title id="svg-external-link-title">(external link)</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"><title>Document</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"><title>Search</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-copy" viewBox="0 0 16 16"><title>Copy</title><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"><title>Copied</title><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"><path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg><div class="side-bar"><div class="site-header" role="banner"> <a href="/" class="site-title lh-tight"> JayJay's Archive </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </a></div><nav aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in JayJay category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/" class="nav-list-link">JayJay</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/1.JayJay/About%20JayJay(Kor)/" class="nav-list-link">About JayJay(Kor)</a><li class="nav-list-item "><a href="/docs/1.JayJay/About%20JayJay(Eng)/" class="nav-list-link">About JayJay(Eng)</a></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Projects category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/2.Projects/Projects_Info/" class="nav-list-link">Projects</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/2.Projects/Projects/Autonics/" class="nav-list-link">01.Autonics</a><li class="nav-list-item "><a href="/docs/2.Projects/Projects/Samsung(P1)/" class="nav-list-link">02.Samsung(Phase1)</a><li class="nav-list-item "><a href="/docs/2.Projects/Projects/LG%20Chemical/" class="nav-list-link">03.LG Chemical</a><li class="nav-list-item "><a href="/docs/2.Projects/Projects/Samsung(P3)/" class="nav-list-link">04.Samsung(Phase3)</a></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Side Projects category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/3.Side_Projects/0.Side_Projects_Info/" class="nav-list-link">Side Projects</a><ul class="nav-list"><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Football Analysis category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/3.Side_Projects/1.Football_Analysis/0.Foobtall_Analysis/" class="nav-list-link">Football Analysis</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/3.Side_Projects/1.Football_Analysis/1.Check_Data/" class="nav-list-link">이벤트 데이터 구성 파악</a><li class="nav-list-item "> <a href="/docs/3.Side_Projects/1.Football_Analysis/2.Visualize_Event_Location/" class="nav-list-link">이벤트 위치 시각화</a><li class="nav-list-item "> <a href="/docs/3.Side_Projects/1.Football_Analysis/3.Aggregation_Match_record/" class="nav-list-link">경기 기록 집계</a></ul></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Tableau category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/4.Tableau/Tableau_Info/" class="nav-list-link">Tableau</a><ul class="nav-list"><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Dashboards category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/4.Tableau/Dashboard/Portfolio/00.Dashboards/" class="nav-list-link">Dashboards</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/4.Tableau/Dashboard/Portfolio/01.Superstore%20Analysis(1)/" class="nav-list-link">Superstore Analysis(1)</a><li class="nav-list-item "> <a href="/docs/4.Tableau/Dashboard/Portfolio/02.Superstore%20Analysis(2)/" class="nav-list-link">Superstore Analysis(2)</a><li class="nav-list-item "> <a href="/docs/4.Tableau/Dashboard/Portfolio/03.Premiere%20League/" class="nav-list-link">Premiere League 20~21</a><li class="nav-list-item "> <a href="/docs/4.Tableau/Dashboard/Portfolio/04.Sample%20Overview/" class="nav-list-link">Sample Overview</a><li class="nav-list-item "> <a href="/docs/4.Tableau/Dashboard/Portfolio/05.Customer%20Insight/" class="nav-list-link">Customer Insight</a></ul><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Desktop category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/4.Tableau/Desktop/0.Desktop_info/" class="nav-list-link">Desktop</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/4.Tableau/Desktop/1.Peformance/" class="nav-list-link">Peformance</a></ul></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Oracle category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/5.Oracle/Oracle_Info/" class="nav-list-link">Oracle</a><ul class="nav-list"><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in DDL category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/5.Oracle/DDL/0.DDL_info/" class="nav-list-link">DDL</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/5.Oracle/DDL/1.CREATE_Table/" class="nav-list-link">CREATE TABLE</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DDL/2.ALTER_Table/" class="nav-list-link">ALTER TABLE</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DDL/3.RENAME_Table/" class="nav-list-link">RENAME TABLE</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DDL/4.DROP_Table/" class="nav-list-link">DROP TABLE</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DDL/5.TRUNCATE_Table/" class="nav-list-link">TRUNCATE TABLE</a></ul><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in DML - SELECT category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/5.Oracle/DML/1.DML_SELECT/" class="nav-list-link">DML - SELECT</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-1.Single_row_Function/" class="nav-list-link">SINGLE ROW</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-2.Date/" class="nav-list-link">DATE</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-3.Join/" class="nav-list-link">JOIN</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-4.Sub_Query/" class="nav-list-link">SUB QUERY</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-5.Index/" class="nav-list-link">ROWNUM</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-6.GROUP_BY/" class="nav-list-link">GROUP BY</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-7.Analytic_Funcion/" class="nav-list-link">PARTITION/WINDOW</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-8.Pivot/" class="nav-list-link">PIVOT/UNPIVOT</a><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/1-9.CASE/" class="nav-list-link">CASE</a></ul><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in DML category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/5.Oracle/DML/2.DML/" class="nav-list-link">DML</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/5.Oracle/DML/3.TCL/" class="nav-list-link">TCL</a></ul><li class="nav-list-item "><a href="/docs/5.Oracle/DCL/DCL_info/" class="nav-list-link">DCL</a><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Optimization category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/5.Oracle/Optimization/Optimization_info/" class="nav-list-link">Optimization</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/5.Oracle/Optimization/01.%EC%A1%B0%EA%B1%B4%20%EB%B6%84%EA%B8%B0/" class="nav-list-link">조건 분기</a></ul></ul><li class="nav-list-item active"><button class="nav-list-expander btn-reset" aria-label="toggle items in Python category" aria-pressed="true"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/6.Python/Python_Info/" class="nav-list-link">Python</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/6.Python/markdown/Basic(1)/" class="nav-list-link">Basic(1)</a><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Numpy category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/6.Python/markdown/Numpy/" class="nav-list-link">Numpy</a><ul class="nav-list"></ul><li class="nav-list-item active"><button class="nav-list-expander btn-reset" aria-label="toggle items in Pandas category" aria-pressed="true"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/6.Python/markdown/Pandas/" class="nav-list-link active">Pandas</a><ul class="nav-list"></ul><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Matplotlib category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/6.Python/markdown/Matplotlib/" class="nav-list-link">Matplotlib</a><ul class="nav-list"></ul></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Theme category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/Theme/Theme/" class="nav-list-link">Theme</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/configuration/" class="nav-list-link">Configuration</a><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Utilities category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/utilities" class="nav-list-link">Utilities</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/utilities/color/" class="nav-list-link">Color</a><li class="nav-list-item "> <a href="/docs/utilities/layout/" class="nav-list-link">Layout</a><li class="nav-list-item "> <a href="/docs/utilities/responsive-modifiers/" class="nav-list-link">Responsive Modifiers</a><li class="nav-list-item "> <a href="/docs/utilities/typography/" class="nav-list-link">Typography</a></ul><li class="nav-list-item "><a href="/docs/navigation-structure/" class="nav-list-link">Navigation Structure</a><li class="nav-list-item "><a href="/docs/customization/" class="nav-list-link">Customization</a><li class="nav-list-item "><a href="/docs/search/" class="nav-list-link">Search</a></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Markdown category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/Markdown/md/" class="nav-list-link">Markdown</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/Markdown/markdown/markdown%20%20Syntax/" class="nav-list-link">Markdown Syntax</a></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in UI Components category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/ui-components" class="nav-list-link">UI Components</a><ul class="nav-list"><li class="nav-list-item "><a href="/docs/ui-components/typography/" class="nav-list-link">Typography</a><li class="nav-list-item "><a href="/docs/ui-components/buttons/" class="nav-list-link">Buttons</a><li class="nav-list-item "><a href="/docs/ui-components/labels/" class="nav-list-link">Labels</a><li class="nav-list-item "><a href="/docs/ui-components/tables/" class="nav-list-link">Tables</a><li class="nav-list-item "><a href="/docs/ui-components/lists/" class="nav-list-link">Lists</a><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in Code category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/ui-components/code/" class="nav-list-link">Code</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/ui-components/code/line-numbers/" class="nav-list-link">Code with line numbers</a></ul><li class="nav-list-item "><a href="/docs/ui-components/callouts/" class="nav-list-link">Callouts</a></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 빅데이터분석기사 category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/7.%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC/" class="nav-list-link">빅데이터분석기사</a><ul class="nav-list"><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in 빅데이터 탐색 category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/7.%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%ED%83%90%EC%83%89/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%ED%83%90%EC%83%89_info/" class="nav-list-link">빅데이터 탐색</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/7.%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%ED%83%90%EC%83%89/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%95%EC%A0%9C/" class="nav-list-link">데이터 정제</a><li class="nav-list-item "> <a href="/docs/7.%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0_%ED%83%90%EC%83%89/%EB%8D%B0%EC%9D%B4%ED%84%B0_%ED%83%90%EC%83%89/" class="nav-list-link">데이터 탐색</a></ul></ul><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Layout category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/layout/layout/" class="nav-list-link">Layout</a><ul class="nav-list"><li class="nav-list-item "><button class="nav-list-expander btn-reset" aria-label="toggle items in A minimal layout page category" aria-pressed="false"> <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg> </button><a href="/docs/layout/minimal/minimal/" class="nav-list-link">A minimal layout page</a><ul class="nav-list"><li class="nav-list-item "> <a href="/docs/layout/minimal/default-child/" class="nav-list-link">Default layout child page</a><li class="nav-list-item "> <a href="/docs/layout/minimal/minimal-child/" class="nav-list-link">Minimal layout child page</a></ul></ul><li class="nav-list-item"><a href="/docs/index-test/" class="nav-list-link">Markdown kitchen sink</a><li class="nav-list-item"><a href="/CHANGELOG/" class="nav-list-link">CHANGELOG</a><li class="nav-list-item"><a href="/MIGRATION/" class="nav-list-link">Migration and Upgrading</a></ul><ul class="nav-list"><li class="nav-list-item external"> <a href="https://www.linkedin.com/in/jong-jun-lim-591596218/" class="nav-list-link external"> Linkedin <svg viewBox="0 0 24 24" aria-labelledby="svg-external-link-title"><use xlink:href="#svg-external-link"></use></svg> </a></ul></nav><footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</footer></div><div class="main" id="top"><div id="main-header" class="main-header"><div class="search" role="search"><div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search JayJay's Archive" aria-label="Search JayJay's Archive" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label></div><div id="search-results" class="search-results"></div></div><nav aria-label="Auxiliary" class="aux-nav"><ul class="aux-nav-list"><li class="aux-nav-list-item"> <a href="//github.com/just-the-docs/just-the-docs" class="site-button" target="_blank" rel="noopener noreferrer" > Just the Docs on GitHub </a></ul></nav></div><div id="main-content-wrap" class="main-content-wrap"><nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list"><li class="breadcrumb-nav-list-item"><a href="/docs/6.Python/Python_Info/">Python</a><li class="breadcrumb-nav-list-item"><span>Pandas</span></ol></nav><div id="main-content" class="main-content"><main><head><style> table.dataframe { white-space: normal; width: 100%; height: 240px; display: block; overflow: auto; font-family: Arial, sans-serif; font-size: 0.9rem; line-height: 20px; text-align: center; border: 0px !important; } table.dataframe th { text-align: center; font-weight: bold; padding: 8px; } table.dataframe td { text-align: center; padding: 8px; } table.dataframe tr:hover { background: #b8d1f3; } .output_prompt { overflow: auto; font-size: 0.9rem; line-height: 1.45; border-radius: 0.3rem; -webkit-overflow-scrolling: touch; padding: 0.8rem; margin-top: 0; margin-bottom: 15px; font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace; color: $code-text-color; border: solid 1px $border-color; border-radius: 0.3rem; word-break: normal; white-space: pre; } .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: center !important; padding: 8px; } .page__content p { margin: 0 0 0px !important; } .page__content p > strong { font-size: 0.8rem !important; }</style><div style="text-align: right;"> 작성일자 : 2023-08-28<br /></div><h2 id="0-pandas"> <a href="#0-pandas" class="anchor-heading" aria-labelledby="0-pandas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 0. Pandas</h2><ul><li><p>Pandas 는 데이터 분석을 위한 자료구조로 데이터 분석 도구를 제공하는 파이썬 라이브러리이며, Pandas 의 특징은 다음과 같음</p><ul><li><p>각각의 행,열에 따라 데이터를 정렬할 수 있는 자료구조</p><li><p>시계열, 비시계열 데이터를 함께 다룰 수 있는 통합 자료구조</p><li><p>데이터의 결측치값을 유연하게 처리할 수 있는 기능</p><li><p>데이터 핸들링 및 특정 행,열의 모든 값을 더하는 등의 데이터 연산 기능</p></ul><li><p>Pandas 의 자료구조로는 Series와 DataFrame이 있음</p><ul><li><p>Series는 1차원 데이터를 다루는 데 효과적인 자료구조임</p><li><p>DataFrame은 행과 열로 구성된 2차원 데이터를 다루는 데 효과적인 자료구조임</p></ul></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div><h2 id="1-series"> <a href="#1-series" class="anchor-heading" aria-labelledby="1-series"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Series</h2><ul><li><p>pandas의 series로 데이터를 선언할 때 따로 인덱스를 지정하지 않았다면 기본적으로 0부터 시작하는 정수값으로 인덱싱됨</p><li><p>아래 예제 처럼 index를 사용자가 지정할 수 있음</p><ul><li><p>선언 후 데이터 값을 확인할 때는 values, index를 확인할 때는 index 함수를 이용해서 확인 할 수 있음</p><li><p>기본 함수 사용법 : pd.Series(data, index=index)</p><li><p>Series객체 생성 시 인덱스값을 통해 데이터에 접근할 수 있음</p><li><p>파이썬의 리스트와 달리 사용자가 index 값을 지정해 줄 수 있으며, 지정한 index 값으로 데이터에 접근 할 수 있음</p></ul></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+0    1
+1    2
+2    3
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">s2</span>
+</code></pre></div></div><pre>
+0    a
+1    b
+2    c
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">s3</span>
+</code></pre></div></div><pre>
+0    a
+1    1
+2    b
+3    2
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s4</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">s4</span>
+</code></pre></div></div><pre>
+1    a
+2    b
+3    c
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s5</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">s5</span>
+</code></pre></div></div><pre>
+a    1
+b    2
+c    3
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s5</span><span class="p">.</span><span class="n">values</span>
+</code></pre></div></div><pre>
+array([1, 2, 3])
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s5</span><span class="p">.</span><span class="n">index</span>
+</code></pre></div></div><pre>
+Index(['a', 'b', 'c'], dtype='object')
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s6</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">s6</span>
+</code></pre></div></div><pre>
+0    1
+1    2
+2    3
+3    4
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s6</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">d</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">s6</span>
+</code></pre></div></div><pre>
+a    1
+b    2
+c    3
+d    4
+dtype: int64
+</pre><h3 id="11-series-기본-함수"> <a href="#11-series-기본-함수" class="anchor-heading" aria-labelledby="11-series-기본-함수"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1.1 Series 기본 함수</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="n">NaN</span><span class="p">])</span>
+<span class="n">s7</span>
+</code></pre></div></div><pre>
+0     1.0
+1     1.0
+2     1.0
+3     4.0
+4     5.0
+5     6.0
+6     7.0
+7     8.0
+8     9.0
+9     9.0
+10    NaN
+dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span><span class="p">.</span><span class="n">size</span> <span class="c1">#개수 반환
+</span></code></pre></div></div><pre>
+11
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">len</span><span class="p">(</span><span class="n">s7</span><span class="p">)</span>
+</code></pre></div></div><pre>
+11
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span> <span class="c1">#NaN을 제외한 개수를 반환
+</span></code></pre></div></div><pre>
+10
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span><span class="p">.</span><span class="nf">shape</span><span class="p">()</span> <span class="c1">#tuple 형태로 shape 반환
+</span></code></pre></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">s7</span><span class="p">)</span>
+<span class="n">a1</span>
+</code></pre></div></div><pre>
+array([ 1.,  1.,  1.,  4.,  5.,  6.,  7.,  8.,  9.,  9., nan])
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="nf">mean</span><span class="p">())</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">s7</span><span class="p">.</span><span class="nf">mean</span><span class="p">())</span> <span class="c1">#NaN을 제외한 평균 반환
+</span></code></pre></div></div><pre>
+nan
+5.1
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span><span class="p">.</span><span class="nf">unique</span><span class="p">()</span> <span class="c1">#유일한 값만 array 형태로 반환
+</span></code></pre></div></div><pre>
+array([ 1.,  4.,  5.,  6.,  7.,  8.,  9., nan])
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s7</span><span class="p">.</span><span class="nf">value_counts</span><span class="p">()</span> <span class="c1">#NaN을 제외하고 각 값들의 빈도를 반환
+</span></code></pre></div></div><pre>
+1.0    3
+9.0    2
+4.0    1
+5.0    1
+6.0    1
+7.0    1
+8.0    1
+dtype: int64
+</pre><h3 id="12-series-연산"> <a href="#12-series-연산" class="anchor-heading" aria-labelledby="12-series-연산"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1.2 Series 연산</h3><ul><li><p>Series와 스칼라의 연산은 각 원소별로 스칼라와의 연산이 적용</p><li><p>Series끼리의 사칙연산도 가능함. 단, index별로 계산이 되는 점을 유의하여야 함</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">d</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">e</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">d</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">e</span><span class="sh">"</span><span class="p">])</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</code></pre></div></div><pre>
+a    1
+b    2
+c    3
+d    4
+e    5
+dtype: int64
+a    2
+b    2
+c    2
+d    2
+e    2
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="o">*</span><span class="mi">3</span>
+</code></pre></div></div><pre>
+a     3
+b     6
+c     9
+d    12
+e    15
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+</code></pre></div></div><pre>
+a    3
+b    4
+c    5
+d    6
+e    7
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="sh">"</span><span class="s">f</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">s2</span><span class="p">[</span><span class="sh">"</span><span class="s">f</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</code></pre></div></div><pre>
+a      1
+b      2
+c      3
+d      4
+e      5
+f    100
+dtype: int64
+a      2
+b      2
+c      2
+d      2
+e      2
+f    200
+dtype: int64
+</pre><h3 id="13-series-update"> <a href="#13-series-update" class="anchor-heading" aria-labelledby="13-series-update"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1.3 Series update</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">),[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">d</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">e</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">f</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+a     2
+b     4
+c     6
+d     8
+e    10
+f    12
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+a    200
+b      4
+c      6
+d      8
+e     10
+f     12
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">.</span><span class="nf">drop</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div><pre>
+b     4
+c     6
+d     8
+e    10
+f    12
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span>
+</code></pre></div></div><pre>
+a    200
+b      4
+c      6
+d      8
+e     10
+f     12
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">.</span><span class="nf">drop</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span> <span class="c1">#inplace를 통해 원 데이터 업데이트
+</span><span class="n">s1</span>
+</code></pre></div></div><pre>
+b     4
+c     6
+d     8
+e    10
+f    12
+dtype: int64
+</pre><h3 id="14-series-selection"> <a href="#14-series-selection" class="anchor-heading" aria-labelledby="14-series-selection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1.4 Series selection</h3><ul><li><p>slicing</p><li><p>리스트, array와 동일하게 적용</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">),[</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">c</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">d</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="s">e</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+a     2
+b     4
+c     6
+d     8
+e    10
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div><pre>
+b    4
+c    6
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+0     2
+1     4
+2     6
+3     8
+4    10
+5    12
+6    14
+7    16
+8    18
+9    20
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">&gt;</span> <span class="mi">10</span>
+</code></pre></div></div><pre>
+0    False
+1    False
+2    False
+3    False
+4    False
+5     True
+6     True
+7     True
+8     True
+9     True
+dtype: bool
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="n">s1</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div><pre>
+5    12
+6    14
+7    16
+8    18
+9    20
+dtype: int64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">s1</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">).</span><span class="nf">sum</span><span class="p">()</span>
+</code></pre></div></div><pre>
+5
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="n">s1</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">].</span><span class="nf">sum</span><span class="p">()</span>
+</code></pre></div></div><pre>
+80
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="n">NaN</span><span class="p">])</span>
+<span class="n">s1</span>
+</code></pre></div></div><pre>
+0    1.0
+1    2.0
+2    3.0
+3    4.0
+4    5.0
+5    NaN
+dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">isnull</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</code></pre></div></div><pre>
+0    False
+1    False
+2    False
+3    False
+4    False
+5     True
+dtype: bool
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="n">pd</span><span class="p">.</span><span class="nf">isnull</span><span class="p">(</span><span class="n">s1</span><span class="p">)]</span>
+</code></pre></div></div><pre>
+5   NaN
+dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">notnull</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</code></pre></div></div><pre>
+0     True
+1     True
+2     True
+3     True
+4     True
+5    False
+dtype: bool
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s1</span><span class="p">[</span><span class="n">pd</span><span class="p">.</span><span class="nf">notnull</span><span class="p">(</span><span class="n">s1</span><span class="p">)]</span>
+</code></pre></div></div><pre>
+0    1.0
+1    2.0
+2    3.0
+3    4.0
+4    5.0
+dtype: float64
+</pre><h2 id="2-dataframe"> <a href="#2-dataframe" class="anchor-heading" aria-labelledby="2-dataframe"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. DataFrame</h2><ul><li><p>Pandas의 Series가 1차원 형태의 자료구조라면 DataFrame은 여러 개의 열로 구성된 2차원 형태의 자료구조임</p><li><p>numpy array를 받아 만들 수 있으며, Series 처럼 변환 가능한 오브젝트들을 갖고 있는 dict 형태를 인자로 넣어주어 DataFrame을 만들 수 있음</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+                   <span class="sh">'</span><span class="s">B</span><span class="sh">'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Timestamp</span><span class="p">(</span><span class="sh">'</span><span class="s">20130102</span><span class="sh">'</span><span class="p">),</span>
+                   <span class="sh">'</span><span class="s">C</span><span class="sh">'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="sh">'</span><span class="s">float32</span><span class="sh">'</span><span class="p">),</span>
+                   <span class="sh">'</span><span class="s">D</span><span class="sh">'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="sh">'</span><span class="s">int32</span><span class="sh">'</span><span class="p">),</span>
+                   <span class="sh">'</span><span class="s">E</span><span class="sh">'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Categorical</span><span class="p">([</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">train</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">train</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">]),</span>
+                   <span class="sh">'</span><span class="s">F</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">foo</span><span class="sh">'</span><span class="p">})</span>
+<span class="n">ex</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<th>C<th>D<th>E<th>F<tbody><tr><th>0<td>1.0<td>2013-01-02<td>1.0<td>3<td>test<td>foo<tr><th>1<td>1.0<td>2013-01-02<td>1.0<td>4<td>train<td>foo<tr><th>2<td>1.0<td>2013-01-02<td>1.0<td>5<td>test<td>foo<tr><th>3<td>1.0<td>2013-01-02<td>1.0<td>6<td>train<td>foo<tr><th>4<td>1.0<td>2013-01-02<td>1.0<td>7<td>test<td>foo</table></div></div><ul><li><p>DataFrame의 컬럼들은 각기 특별한 자료형을 갖고 있음</p><li><p>이는 DataFrame 내에 있는 dtypes라는 속성을 통해 확인 가능함</p><li><p>파이썬의 기본적인 소수점은 float64로 잡히고, 기본적은 문자열은 str이 아니라 object라는 자료형으로 나타남</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex</span><span class="p">.</span><span class="n">dtypes</span>
+</code></pre></div></div><pre>
+A           float64
+B    datetime64[ns]
+C           float32
+D             int32
+E          category
+F            object
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">B</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">ex2</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>0<td>0.406282<td>0.368642<tr><th>1<td>1.140642<td>-0.077410<tr><th>2<td>-0.812914<td>-0.273615<tr><th>3<td>-0.448528<td>0.854089<tr><th>4<td>-0.237988<td>0.196074</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">head</span><span class="p">()</span> <span class="c1">#기본값 = 5
+</span></code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>0<td>0.406282<td>0.368642<tr><th>1<td>1.140642<td>-0.077410<tr><th>2<td>-0.812914<td>-0.273615<tr><th>3<td>-0.448528<td>0.854089<tr><th>4<td>-0.237988<td>0.196074</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>2<td>-0.812914<td>-0.273615<tr><th>3<td>-0.448528<td>0.854089<tr><th>4<td>-0.237988<td>0.196074</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="n">index</span> <span class="c1">#check index
+</span></code></pre></div></div><pre>
+RangeIndex(start=0, stop=5, step=1)
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="n">columns</span> <span class="c1">#check columns
+</span></code></pre></div></div><pre>
+Index(['A', 'B'], dtype='object')
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="n">values</span> <span class="c1">#check values
+</span></code></pre></div></div><pre>
+array([[ 0.40628183,  0.36864168],
+       [ 1.14064213, -0.07741036],
+       [-0.81291384, -0.27361517],
+       [-0.44852821,  0.85408865],
+       [-0.23798752,  0.1960742 ]])
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">describe</span><span class="p">()</span> <span class="c1">#simple statistic information of DataFrame
+</span></code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>count<td>5.000000<td>5.000000<tr><th>mean<td>0.009499<td>0.213556<tr><th>std<td>0.772063<td>0.434924<tr><th>min<td>-0.812914<td>-0.273615<tr><th>25%<td>-0.448528<td>-0.077410<tr><th>50%<td>-0.237988<td>0.196074<tr><th>75%<td>0.406282<td>0.368642<tr><th>max<td>1.140642<td>0.854089</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">sort_index</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>B<th>A<tbody><tr><th>0<td>0.368642<td>0.406282<tr><th>1<td>-0.077410<td>1.140642<tr><th>2<td>-0.273615<td>-0.812914<tr><th>3<td>0.854089<td>-0.448528<tr><th>4<td>0.196074<td>-0.237988</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">sort_index</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>4<td>-0.237988<td>0.196074<tr><th>3<td>-0.448528<td>0.854089<tr><th>2<td>-0.812914<td>-0.273615<tr><th>1<td>1.140642<td>-0.077410<tr><th>0<td>0.406282<td>0.368642</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">sort_index</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>0<td>0.406282<td>0.368642<tr><th>1<td>1.140642<td>-0.077410<tr><th>2<td>-0.812914<td>-0.273615<tr><th>3<td>-0.448528<td>0.854089<tr><th>4<td>-0.237988<td>0.196074</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="nf">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="sh">'</span><span class="s">B</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>2<td>-0.812914<td>-0.273615<tr><th>1<td>1.140642<td>-0.077410<tr><th>4<td>-0.237988<td>0.196074<tr><th>0<td>0.406282<td>0.368642<tr><th>3<td>-0.448528<td>0.854089</table></div></div><h3 id="selection-using-pandas"> <a href="#selection-using-pandas" class="anchor-heading" aria-labelledby="selection-using-pandas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Selection using pandas</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>0<td>0.406282<td>0.368642<tr><th>1<td>1.140642<td>-0.077410<tr><th>2<td>-0.812914<td>-0.273615<tr><th>3<td>-0.448528<td>0.854089<tr><th>4<td>-0.237988<td>0.196074</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div><pre>
+0    0.406282
+1    1.140642
+2   -0.812914
+3   -0.448528
+4   -0.237988
+Name: A, dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">.</span><span class="n">A</span>
+</code></pre></div></div><pre>
+0    0.406282
+1    1.140642
+2   -0.812914
+3   -0.448528
+4   -0.237988
+Name: A, dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">[[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<tbody><tr><th>0<td>0.406282<tr><th>1<td>1.140642<tr><th>2<td>-0.812914<tr><th>3<td>-0.448528<tr><th>4<td>-0.237988</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">type</span><span class="p">(</span><span class="n">ex2</span><span class="p">[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">])</span>
+</code></pre></div></div><pre>
+pandas.core.series.Series
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">type</span><span class="p">(</span><span class="n">ex2</span><span class="p">[[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">]])</span>
+</code></pre></div></div><pre>
+pandas.core.frame.DataFrame
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ex2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>A<th>B<tbody><tr><th>0<td>0.406282<td>0.368642<tr><th>1<td>1.140642<td>-0.077410<tr><th>2<td>-0.812914<td>-0.273615</table></div></div><h2 id="merge-dataframe"> <a href="#merge-dataframe" class="anchor-heading" aria-labelledby="merge-dataframe"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Merge DataFrame</h2><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span><span class="sh">'</span><span class="s">key</span><span class="sh">'</span> <span class="p">:</span> <span class="nf">list</span><span class="p">(</span><span class="sh">'</span><span class="s">ABCDE</span><span class="sh">'</span><span class="p">),</span>
+                    <span class="sh">'</span><span class="s">value</span><span class="sh">'</span> <span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)})</span>
+<span class="n">df1</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<tbody><tr><th>0<td>A<td>-0.604176<tr><th>1<td>B<td>-0.882808<tr><th>2<td>C<td>-0.253994<tr><th>3<td>D<td>0.461608<tr><th>4<td>E<td>-0.507770</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span><span class="sh">'</span><span class="s">key</span><span class="sh">'</span> <span class="p">:</span> <span class="nf">list</span><span class="p">(</span><span class="sh">'</span><span class="s">ABCXZ</span><span class="sh">'</span><span class="p">),</span>
+                    <span class="sh">'</span><span class="s">value</span><span class="sh">'</span> <span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)})</span>
+<span class="n">df2</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<tbody><tr><th>0<td>A<td>0.071220<tr><th>1<td>B<td>0.957223<tr><th>2<td>C<td>0.622761<tr><th>3<td>X<td>1.802048<tr><th>4<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span> <span class="c1"># axis = 0 (Default), concat by rows 
+</span></code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<tbody><tr><th>0<td>A<td>-0.604176<tr><th>1<td>B<td>-0.882808<tr><th>2<td>C<td>-0.253994<tr><th>3<td>D<td>0.461608<tr><th>4<td>E<td>-0.507770<tr><th>0<td>A<td>0.071220<tr><th>1<td>B<td>0.957223<tr><th>2<td>C<td>0.622761<tr><th>3<td>X<td>1.802048<tr><th>4<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<tbody><tr><th>0<td>A<td>-0.604176<tr><th>1<td>B<td>-0.882808<tr><th>2<td>C<td>-0.253994<tr><th>3<td>D<td>0.461608<tr><th>4<td>E<td>-0.507770<tr><th>5<td>A<td>0.071220<tr><th>6<td>B<td>0.957223<tr><th>7<td>C<td>0.622761<tr><th>8<td>X<td>1.802048<tr><th>9<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">]).</span><span class="nf">reset_index</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>index<th>key<th>value<tbody><tr><th>0<td>0<td>A<td>-0.604176<tr><th>1<td>1<td>B<td>-0.882808<tr><th>2<td>2<td>C<td>-0.253994<tr><th>3<td>3<td>D<td>0.461608<tr><th>4<td>4<td>E<td>-0.507770<tr><th>5<td>0<td>A<td>0.071220<tr><th>6<td>1<td>B<td>0.957223<tr><th>7<td>2<td>C<td>0.622761<tr><th>8<td>3<td>X<td>1.802048<tr><th>9<td>4<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>key<th>value<tbody><tr><th>0<td>A<td>-0.604176<td>A<td>0.071220<tr><th>1<td>B<td>-0.882808<td>B<td>0.957223<tr><th>2<td>C<td>-0.253994<td>C<td>0.622761<tr><th>3<td>D<td>0.461608<td>X<td>1.802048<tr><th>4<td>E<td>-0.507770<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">key</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">values2</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">df2</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>values2<tbody><tr><th>0<td>A<td>0.071220<tr><th>1<td>B<td>0.957223<tr><th>2<td>C<td>0.622761<tr><th>3<td>X<td>1.802048<tr><th>4<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>values2<tbody><tr><th>0<td>A<td>-0.604176<td>NaN<tr><th>1<td>B<td>-0.882808<td>NaN<tr><th>2<td>C<td>-0.253994<td>NaN<tr><th>3<td>D<td>0.461608<td>NaN<tr><th>4<td>E<td>-0.507770<td>NaN<tr><th>0<td>A<td>NaN<td>0.071220<tr><th>1<td>B<td>NaN<td>0.957223<tr><th>2<td>C<td>NaN<td>0.622761<tr><th>3<td>X<td>NaN<td>1.802048<tr><th>4<td>Z<td>NaN<td>-0.531795</table></div></div><h3 id="pdmerge"> <a href="#pdmerge" class="anchor-heading" aria-labelledby="pdmerge"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> pd.merge()</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<tbody><tr><th>0<td>A<td>-0.604176<tr><th>1<td>B<td>-0.882808<tr><th>2<td>C<td>-0.253994<tr><th>3<td>D<td>0.461608<tr><th>4<td>E<td>-0.507770</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>values2<tbody><tr><th>0<td>A<td>0.071220<tr><th>1<td>B<td>0.957223<tr><th>2<td>C<td>0.622761<tr><th>3<td>X<td>1.802048<tr><th>4<td>Z<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="sh">'</span><span class="s">key</span><span class="sh">'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="sh">'</span><span class="s">inner</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>values2<tbody><tr><th>0<td>A<td>-0.604176<td>0.071220<tr><th>1<td>B<td>-0.882808<td>0.957223<tr><th>2<td>C<td>-0.253994<td>0.622761</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="sh">'</span><span class="s">key</span><span class="sh">'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="sh">'</span><span class="s">left</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>values2<tbody><tr><th>0<td>A<td>-0.604176<td>0.071220<tr><th>1<td>B<td>-0.882808<td>0.957223<tr><th>2<td>C<td>-0.253994<td>0.622761<tr><th>3<td>D<td>0.461608<td>NaN<tr><th>4<td>E<td>-0.507770<td>NaN</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="sh">'</span><span class="s">key</span><span class="sh">'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="sh">'</span><span class="s">right</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>values2<tbody><tr><th>0<td>A<td>-0.604176<td>0.071220<tr><th>1<td>B<td>-0.882808<td>0.957223<tr><th>2<td>C<td>-0.253994<td>0.622761<tr><th>3<td>X<td>NaN<td>1.802048<tr><th>4<td>Z<td>NaN<td>-0.531795</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="sh">'</span><span class="s">key</span><span class="sh">'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="sh">'</span><span class="s">outer</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>key<th>value<th>values2<tbody><tr><th>0<td>A<td>-0.604176<td>0.071220<tr><th>1<td>B<td>-0.882808<td>0.957223<tr><th>2<td>C<td>-0.253994<td>0.622761<tr><th>3<td>D<td>0.461608<td>NaN<tr><th>4<td>E<td>-0.507770<td>NaN<tr><th>5<td>X<td>NaN<td>1.802048<tr><th>6<td>Z<td>NaN<td>-0.531795</table></div></div><h3 id="4--practice-using-data-set---iris-dataset"> <a href="#4--practice-using-data-set---iris-dataset" class="anchor-heading" aria-labelledby="4--practice-using-data-set---iris-dataset"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Practice using data set - iris dataset</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+</code></pre></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span> <span class="c1"># 로드된 데이터가 속성-스타일 접근을 제공하는 딕셔너리와 번치 객체로 표현된 것을 확인
+</span><span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">DESCR</span><span class="p">)</span> <span class="c1"># Description 속성을 이용해서 데이터셋의 정보를 확인
+</span>
+<span class="c1"># 각 key에 저장된 value 확인
+# feature
+</span><span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="c1"># label
+</span><span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">target_names</span><span class="p">)</span>
+
+<span class="c1"># feature_names 와 target을 레코드로 갖는 데이터프레임 생성
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+</code></pre></div></div><pre>
+{'data': array([[5.1, 3.5, 1.4, 0.2],
+       [4.9, 3. , 1.4, 0.2],
+       [4.7, 3.2, 1.3, 0.2],
+       [4.6, 3.1, 1.5, 0.2],
+       [5. , 3.6, 1.4, 0.2],
+       [5.4, 3.9, 1.7, 0.4],
+       [4.6, 3.4, 1.4, 0.3],
+       [5. , 3.4, 1.5, 0.2],
+       [4.4, 2.9, 1.4, 0.2],
+       [4.9, 3.1, 1.5, 0.1],
+       [5.4, 3.7, 1.5, 0.2],
+       [4.8, 3.4, 1.6, 0.2],
+       [4.8, 3. , 1.4, 0.1],
+       [4.3, 3. , 1.1, 0.1],
+       [5.8, 4. , 1.2, 0.2],
+       [5.7, 4.4, 1.5, 0.4],
+       [5.4, 3.9, 1.3, 0.4],
+       [5.1, 3.5, 1.4, 0.3],
+       [5.7, 3.8, 1.7, 0.3],
+       [5.1, 3.8, 1.5, 0.3],
+       [5.4, 3.4, 1.7, 0.2],
+       [5.1, 3.7, 1.5, 0.4],
+       [4.6, 3.6, 1. , 0.2],
+       [5.1, 3.3, 1.7, 0.5],
+       [4.8, 3.4, 1.9, 0.2],
+       [5. , 3. , 1.6, 0.2],
+       [5. , 3.4, 1.6, 0.4],
+       [5.2, 3.5, 1.5, 0.2],
+       [5.2, 3.4, 1.4, 0.2],
+       [4.7, 3.2, 1.6, 0.2],
+       [4.8, 3.1, 1.6, 0.2],
+       [5.4, 3.4, 1.5, 0.4],
+       [5.2, 4.1, 1.5, 0.1],
+       [5.5, 4.2, 1.4, 0.2],
+       [4.9, 3.1, 1.5, 0.2],
+       [5. , 3.2, 1.2, 0.2],
+       [5.5, 3.5, 1.3, 0.2],
+       [4.9, 3.6, 1.4, 0.1],
+       [4.4, 3. , 1.3, 0.2],
+       [5.1, 3.4, 1.5, 0.2],
+       [5. , 3.5, 1.3, 0.3],
+       [4.5, 2.3, 1.3, 0.3],
+       [4.4, 3.2, 1.3, 0.2],
+       [5. , 3.5, 1.6, 0.6],
+       [5.1, 3.8, 1.9, 0.4],
+       [4.8, 3. , 1.4, 0.3],
+       [5.1, 3.8, 1.6, 0.2],
+       [4.6, 3.2, 1.4, 0.2],
+       [5.3, 3.7, 1.5, 0.2],
+       [5. , 3.3, 1.4, 0.2],
+       [7. , 3.2, 4.7, 1.4],
+       [6.4, 3.2, 4.5, 1.5],
+       [6.9, 3.1, 4.9, 1.5],
+       [5.5, 2.3, 4. , 1.3],
+       [6.5, 2.8, 4.6, 1.5],
+       [5.7, 2.8, 4.5, 1.3],
+       [6.3, 3.3, 4.7, 1.6],
+       [4.9, 2.4, 3.3, 1. ],
+       [6.6, 2.9, 4.6, 1.3],
+       [5.2, 2.7, 3.9, 1.4],
+       [5. , 2. , 3.5, 1. ],
+       [5.9, 3. , 4.2, 1.5],
+       [6. , 2.2, 4. , 1. ],
+       [6.1, 2.9, 4.7, 1.4],
+       [5.6, 2.9, 3.6, 1.3],
+       [6.7, 3.1, 4.4, 1.4],
+       [5.6, 3. , 4.5, 1.5],
+       [5.8, 2.7, 4.1, 1. ],
+       [6.2, 2.2, 4.5, 1.5],
+       [5.6, 2.5, 3.9, 1.1],
+       [5.9, 3.2, 4.8, 1.8],
+       [6.1, 2.8, 4. , 1.3],
+       [6.3, 2.5, 4.9, 1.5],
+       [6.1, 2.8, 4.7, 1.2],
+       [6.4, 2.9, 4.3, 1.3],
+       [6.6, 3. , 4.4, 1.4],
+       [6.8, 2.8, 4.8, 1.4],
+       [6.7, 3. , 5. , 1.7],
+       [6. , 2.9, 4.5, 1.5],
+       [5.7, 2.6, 3.5, 1. ],
+       [5.5, 2.4, 3.8, 1.1],
+       [5.5, 2.4, 3.7, 1. ],
+       [5.8, 2.7, 3.9, 1.2],
+       [6. , 2.7, 5.1, 1.6],
+       [5.4, 3. , 4.5, 1.5],
+       [6. , 3.4, 4.5, 1.6],
+       [6.7, 3.1, 4.7, 1.5],
+       [6.3, 2.3, 4.4, 1.3],
+       [5.6, 3. , 4.1, 1.3],
+       [5.5, 2.5, 4. , 1.3],
+       [5.5, 2.6, 4.4, 1.2],
+       [6.1, 3. , 4.6, 1.4],
+       [5.8, 2.6, 4. , 1.2],
+       [5. , 2.3, 3.3, 1. ],
+       [5.6, 2.7, 4.2, 1.3],
+       [5.7, 3. , 4.2, 1.2],
+       [5.7, 2.9, 4.2, 1.3],
+       [6.2, 2.9, 4.3, 1.3],
+       [5.1, 2.5, 3. , 1.1],
+       [5.7, 2.8, 4.1, 1.3],
+       [6.3, 3.3, 6. , 2.5],
+       [5.8, 2.7, 5.1, 1.9],
+       [7.1, 3. , 5.9, 2.1],
+       [6.3, 2.9, 5.6, 1.8],
+       [6.5, 3. , 5.8, 2.2],
+       [7.6, 3. , 6.6, 2.1],
+       [4.9, 2.5, 4.5, 1.7],
+       [7.3, 2.9, 6.3, 1.8],
+       [6.7, 2.5, 5.8, 1.8],
+       [7.2, 3.6, 6.1, 2.5],
+       [6.5, 3.2, 5.1, 2. ],
+       [6.4, 2.7, 5.3, 1.9],
+       [6.8, 3. , 5.5, 2.1],
+       [5.7, 2.5, 5. , 2. ],
+       [5.8, 2.8, 5.1, 2.4],
+       [6.4, 3.2, 5.3, 2.3],
+       [6.5, 3. , 5.5, 1.8],
+       [7.7, 3.8, 6.7, 2.2],
+       [7.7, 2.6, 6.9, 2.3],
+       [6. , 2.2, 5. , 1.5],
+       [6.9, 3.2, 5.7, 2.3],
+       [5.6, 2.8, 4.9, 2. ],
+       [7.7, 2.8, 6.7, 2. ],
+       [6.3, 2.7, 4.9, 1.8],
+       [6.7, 3.3, 5.7, 2.1],
+       [7.2, 3.2, 6. , 1.8],
+       [6.2, 2.8, 4.8, 1.8],
+       [6.1, 3. , 4.9, 1.8],
+       [6.4, 2.8, 5.6, 2.1],
+       [7.2, 3. , 5.8, 1.6],
+       [7.4, 2.8, 6.1, 1.9],
+       [7.9, 3.8, 6.4, 2. ],
+       [6.4, 2.8, 5.6, 2.2],
+       [6.3, 2.8, 5.1, 1.5],
+       [6.1, 2.6, 5.6, 1.4],
+       [7.7, 3. , 6.1, 2.3],
+       [6.3, 3.4, 5.6, 2.4],
+       [6.4, 3.1, 5.5, 1.8],
+       [6. , 3. , 4.8, 1.8],
+       [6.9, 3.1, 5.4, 2.1],
+       [6.7, 3.1, 5.6, 2.4],
+       [6.9, 3.1, 5.1, 2.3],
+       [5.8, 2.7, 5.1, 1.9],
+       [6.8, 3.2, 5.9, 2.3],
+       [6.7, 3.3, 5.7, 2.5],
+       [6.7, 3. , 5.2, 2.3],
+       [6.3, 2.5, 5. , 1.9],
+       [6.5, 3. , 5.2, 2. ],
+       [6.2, 3.4, 5.4, 2.3],
+       [5.9, 3. , 5.1, 1.8]]), 'target': array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), 'frame': None, 'target_names': array(['setosa', 'versicolor', 'virginica'], dtype='&lt;U10'), 'DESCR': '.. _iris_dataset:\n\nIris plants dataset\n--------------------\n\n**Data Set Characteristics:**\n\n    :Number of Instances: 150 (50 in each of three classes)\n    :Number of Attributes: 4 numeric, predictive attributes and the class\n    :Attribute Information:\n        - sepal length in cm\n        - sepal width in cm\n        - petal length in cm\n        - petal width in cm\n        - class:\n                - Iris-Setosa\n                - Iris-Versicolour\n                - Iris-Virginica\n                \n    :Summary Statistics:\n\n    ============== ==== ==== ======= ===== ====================\n                    Min  Max   Mean    SD   Class Correlation\n    ============== ==== ==== ======= ===== ====================\n    sepal length:   4.3  7.9   5.84   0.83    0.7826\n    sepal width:    2.0  4.4   3.05   0.43   -0.4194\n    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)\n    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)\n    ============== ==== ==== ======= ===== ====================\n\n    :Missing Attribute Values: None\n    :Class Distribution: 33.3% for each of 3 classes.\n    :Creator: R.A. Fisher\n    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)\n    :Date: July, 1988\n\nThe famous Iris database, first used by Sir R.A. Fisher. The dataset is taken\nfrom Fisher\'s paper. Note that it\'s the same as in R, but not as in the UCI\nMachine Learning Repository, which has two wrong data points.\n\nThis is perhaps the best known database to be found in the\npattern recognition literature.  Fisher\'s paper is a classic in the field and\nis referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The\ndata set contains 3 classes of 50 instances each, where each class refers to a\ntype of iris plant.  One class is linearly separable from the other 2; the\nlatter are NOT linearly separable from each other.\n\n.. topic:: References\n\n   - Fisher, R.A. "The use of multiple measurements in taxonomic problems"\n     Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to\n     Mathematical Statistics" (John Wiley, NY, 1950).\n   - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.\n     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.\n   - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System\n     Structure and Classification Rule for Recognition in Partially Exposed\n     Environments".  IEEE Transactions on Pattern Analysis and Machine\n     Intelligence, Vol. PAMI-2, No. 1, 67-71.\n   - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions\n     on Information Theory, May 1972, 431-433.\n   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II\n     conceptual clustering system finds 3 classes in the data.\n   - Many, many more ...', 'feature_names': ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)'], 'filename': 'iris.csv', 'data_module': 'sklearn.datasets.data'}
+.. _iris_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 150 (50 in each of three classes)
+    :Number of Attributes: 4 numeric, predictive attributes and the class
+    :Attribute Information:
+        - sepal length in cm
+        - sepal width in cm
+        - petal length in cm
+        - petal width in cm
+        - class:
+                - Iris-Setosa
+                - Iris-Versicolour
+                - Iris-Virginica
+                
+    :Summary Statistics:
+
+    ============== ==== ==== ======= ===== ====================
+                    Min  Max   Mean    SD   Class Correlation
+    ============== ==== ==== ======= ===== ====================
+    sepal length:   4.3  7.9   5.84   0.83    0.7826
+    sepal width:    2.0  4.4   3.05   0.43   -0.4194
+    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+    ============== ==== ==== ======= ===== ====================
+
+    :Missing Attribute Values: None
+    :Class Distribution: 33.3% for each of 3 classes.
+    :Creator: R.A. Fisher
+    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+    :Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher's paper. Note that it's the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher's paper is a classic in the field and
+is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. topic:: References
+
+   - Fisher, R.A. "The use of multiple measurements in taxonomic problems"
+     Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to
+     Mathematical Statistics" (John Wiley, NY, 1950).
+   - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.
+   - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+     Structure and Classification Rule for Recognition in Partially Exposed
+     Environments".  IEEE Transactions on Pattern Analysis and Machine
+     Intelligence, Vol. PAMI-2, No. 1, 67-71.
+   - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions
+     on Information Theory, May 1972, 431-433.
+   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II
+     conceptual clustering system finds 3 classes in the data.
+   - Many, many more ...
+[[5.1 3.5 1.4 0.2]
+ [4.9 3.  1.4 0.2]
+ [4.7 3.2 1.3 0.2]
+ [4.6 3.1 1.5 0.2]
+ [5.  3.6 1.4 0.2]
+ [5.4 3.9 1.7 0.4]
+ [4.6 3.4 1.4 0.3]
+ [5.  3.4 1.5 0.2]
+ [4.4 2.9 1.4 0.2]
+ [4.9 3.1 1.5 0.1]
+ [5.4 3.7 1.5 0.2]
+ [4.8 3.4 1.6 0.2]
+ [4.8 3.  1.4 0.1]
+ [4.3 3.  1.1 0.1]
+ [5.8 4.  1.2 0.2]
+ [5.7 4.4 1.5 0.4]
+ [5.4 3.9 1.3 0.4]
+ [5.1 3.5 1.4 0.3]
+ [5.7 3.8 1.7 0.3]
+ [5.1 3.8 1.5 0.3]
+ [5.4 3.4 1.7 0.2]
+ [5.1 3.7 1.5 0.4]
+ [4.6 3.6 1.  0.2]
+ [5.1 3.3 1.7 0.5]
+ [4.8 3.4 1.9 0.2]
+ [5.  3.  1.6 0.2]
+ [5.  3.4 1.6 0.4]
+ [5.2 3.5 1.5 0.2]
+ [5.2 3.4 1.4 0.2]
+ [4.7 3.2 1.6 0.2]
+ [4.8 3.1 1.6 0.2]
+ [5.4 3.4 1.5 0.4]
+ [5.2 4.1 1.5 0.1]
+ [5.5 4.2 1.4 0.2]
+ [4.9 3.1 1.5 0.2]
+ [5.  3.2 1.2 0.2]
+ [5.5 3.5 1.3 0.2]
+ [4.9 3.6 1.4 0.1]
+ [4.4 3.  1.3 0.2]
+ [5.1 3.4 1.5 0.2]
+ [5.  3.5 1.3 0.3]
+ [4.5 2.3 1.3 0.3]
+ [4.4 3.2 1.3 0.2]
+ [5.  3.5 1.6 0.6]
+ [5.1 3.8 1.9 0.4]
+ [4.8 3.  1.4 0.3]
+ [5.1 3.8 1.6 0.2]
+ [4.6 3.2 1.4 0.2]
+ [5.3 3.7 1.5 0.2]
+ [5.  3.3 1.4 0.2]
+ [7.  3.2 4.7 1.4]
+ [6.4 3.2 4.5 1.5]
+ [6.9 3.1 4.9 1.5]
+ [5.5 2.3 4.  1.3]
+ [6.5 2.8 4.6 1.5]
+ [5.7 2.8 4.5 1.3]
+ [6.3 3.3 4.7 1.6]
+ [4.9 2.4 3.3 1. ]
+ [6.6 2.9 4.6 1.3]
+ [5.2 2.7 3.9 1.4]
+ [5.  2.  3.5 1. ]
+ [5.9 3.  4.2 1.5]
+ [6.  2.2 4.  1. ]
+ [6.1 2.9 4.7 1.4]
+ [5.6 2.9 3.6 1.3]
+ [6.7 3.1 4.4 1.4]
+ [5.6 3.  4.5 1.5]
+ [5.8 2.7 4.1 1. ]
+ [6.2 2.2 4.5 1.5]
+ [5.6 2.5 3.9 1.1]
+ [5.9 3.2 4.8 1.8]
+ [6.1 2.8 4.  1.3]
+ [6.3 2.5 4.9 1.5]
+ [6.1 2.8 4.7 1.2]
+ [6.4 2.9 4.3 1.3]
+ [6.6 3.  4.4 1.4]
+ [6.8 2.8 4.8 1.4]
+ [6.7 3.  5.  1.7]
+ [6.  2.9 4.5 1.5]
+ [5.7 2.6 3.5 1. ]
+ [5.5 2.4 3.8 1.1]
+ [5.5 2.4 3.7 1. ]
+ [5.8 2.7 3.9 1.2]
+ [6.  2.7 5.1 1.6]
+ [5.4 3.  4.5 1.5]
+ [6.  3.4 4.5 1.6]
+ [6.7 3.1 4.7 1.5]
+ [6.3 2.3 4.4 1.3]
+ [5.6 3.  4.1 1.3]
+ [5.5 2.5 4.  1.3]
+ [5.5 2.6 4.4 1.2]
+ [6.1 3.  4.6 1.4]
+ [5.8 2.6 4.  1.2]
+ [5.  2.3 3.3 1. ]
+ [5.6 2.7 4.2 1.3]
+ [5.7 3.  4.2 1.2]
+ [5.7 2.9 4.2 1.3]
+ [6.2 2.9 4.3 1.3]
+ [5.1 2.5 3.  1.1]
+ [5.7 2.8 4.1 1.3]
+ [6.3 3.3 6.  2.5]
+ [5.8 2.7 5.1 1.9]
+ [7.1 3.  5.9 2.1]
+ [6.3 2.9 5.6 1.8]
+ [6.5 3.  5.8 2.2]
+ [7.6 3.  6.6 2.1]
+ [4.9 2.5 4.5 1.7]
+ [7.3 2.9 6.3 1.8]
+ [6.7 2.5 5.8 1.8]
+ [7.2 3.6 6.1 2.5]
+ [6.5 3.2 5.1 2. ]
+ [6.4 2.7 5.3 1.9]
+ [6.8 3.  5.5 2.1]
+ [5.7 2.5 5.  2. ]
+ [5.8 2.8 5.1 2.4]
+ [6.4 3.2 5.3 2.3]
+ [6.5 3.  5.5 1.8]
+ [7.7 3.8 6.7 2.2]
+ [7.7 2.6 6.9 2.3]
+ [6.  2.2 5.  1.5]
+ [6.9 3.2 5.7 2.3]
+ [5.6 2.8 4.9 2. ]
+ [7.7 2.8 6.7 2. ]
+ [6.3 2.7 4.9 1.8]
+ [6.7 3.3 5.7 2.1]
+ [7.2 3.2 6.  1.8]
+ [6.2 2.8 4.8 1.8]
+ [6.1 3.  4.9 1.8]
+ [6.4 2.8 5.6 2.1]
+ [7.2 3.  5.8 1.6]
+ [7.4 2.8 6.1 1.9]
+ [7.9 3.8 6.4 2. ]
+ [6.4 2.8 5.6 2.2]
+ [6.3 2.8 5.1 1.5]
+ [6.1 2.6 5.6 1.4]
+ [7.7 3.  6.1 2.3]
+ [6.3 3.4 5.6 2.4]
+ [6.4 3.1 5.5 1.8]
+ [6.  3.  4.8 1.8]
+ [6.9 3.1 5.4 2.1]
+ [6.7 3.1 5.6 2.4]
+ [6.9 3.1 5.1 2.3]
+ [5.8 2.7 5.1 1.9]
+ [6.8 3.2 5.9 2.3]
+ [6.7 3.3 5.7 2.5]
+ [6.7 3.  5.2 2.3]
+ [6.3 2.5 5.  1.9]
+ [6.5 3.  5.2 2. ]
+ [6.2 3.4 5.4 2.3]
+ [5.9 3.  5.1 1.8]]
+['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2]
+['setosa' 'versicolor' 'virginica']
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="nf">head</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length (cm)<th>sepal width (cm)<th>petal length (cm)<th>petal width (cm)<tbody><tr><th>0<td>5.1<td>3.5<td>1.4<td>0.2<tr><th>1<td>4.9<td>3.0<td>1.4<td>0.2<tr><th>2<td>4.7<td>3.2<td>1.3<td>0.2<tr><th>3<td>4.6<td>3.1<td>1.5<td>0.2<tr><th>4<td>5.0<td>3.6<td>1.4<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="nf">tail</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length (cm)<th>sepal width (cm)<th>petal length (cm)<th>petal width (cm)<tbody><tr><th>145<td>6.7<td>3.0<td>5.2<td>2.3<tr><th>146<td>6.3<td>2.5<td>5.0<td>1.9<tr><th>147<td>6.5<td>3.0<td>5.2<td>2.0<tr><th>148<td>6.2<td>3.4<td>5.4<td>2.3<tr><th>149<td>5.9<td>3.0<td>5.1<td>1.8</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">index</span> <span class="c1">#인덱스 확인
+</span></code></pre></div></div><pre>
+RangeIndex(start=0, stop=150, step=1)
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">columns</span> <span class="c1">#컬럼 확인
+</span></code></pre></div></div><pre>
+Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
+       'petal width (cm)'],
+      dtype='object')
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">dtypes</span> <span class="c1">#형식 확인
+</span></code></pre></div></div><pre>
+sepal length (cm)    float64
+sepal width (cm)     float64
+petal length (cm)    float64
+petal width (cm)     float64
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length (cm)</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width (cm)</span><span class="sh">'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length (cm)</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width (cm)</span><span class="sh">'</span><span class="p">]].</span><span class="nf">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">dtypes</span> <span class="c1">#형식 변경
+</span></code></pre></div></div><pre>
+sepal length (cm)     object
+sepal width (cm)      object
+petal length (cm)    float64
+petal width (cm)     float64
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length (cm)</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width (cm)</span><span class="sh">'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length (cm)</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width (cm)</span><span class="sh">'</span><span class="p">]].</span><span class="nf">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">dtypes</span>
+</code></pre></div></div><pre>
+sepal length (cm)    float64
+sepal width (cm)     float64
+petal length (cm)    float64
+petal width (cm)     float64
+dtype: object
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="nf">info</span><span class="p">()</span> <span class="c1">#데이터 타입, 각 아이템 개수 확인
+</span></code></pre></div></div><pre>
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 4 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   sepal length (cm)  150 non-null    float64
+ 1   sepal width (cm)   150 non-null    float64
+ 2   petal length (cm)  150 non-null    float64
+ 3   petal width (cm)   150 non-null    float64
+dtypes: float64(4)
+memory usage: 4.8 KB
+</pre><h3 id="42-데이터-전처리"> <a href="#42-데이터-전처리" class="anchor-heading" aria-labelledby="42-데이터-전처리"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4.2 데이터 전처리</h3><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">sepal length (cm)</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">sepal length</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width (cm)</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">sepal width</span><span class="sh">'</span><span class="p">,</span>
+                        <span class="sh">'</span><span class="s">petal length (cm)</span><span class="sh">'</span> <span class="p">:</span> <span class="sh">'</span><span class="s">petal length</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">petal width (cm)</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">petal width</span><span class="sh">'</span><span class="p">,</span>
+                        <span class="sh">'</span><span class="s">variety</span><span class="sh">'</span> <span class="p">:</span> <span class="sh">'</span><span class="s">species</span><span class="sh">'</span><span class="p">})</span> <span class="c1">#변수 이름 변경
+</span><span class="n">df</span><span class="p">.</span><span class="nf">head</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>0<td>5.1<td>3.5<td>1.4<td>0.2<tr><th>1<td>4.9<td>3.0<td>1.4<td>0.2<tr><th>2<td>4.7<td>3.2<td>1.3<td>0.2<tr><th>3<td>4.6<td>3.1<td>1.5<td>0.2<tr><th>4<td>5.0<td>3.6<td>1.4<td>0.2</table></div></div><p>Dataframe column 선택</p><ul><li><p>dataframe[ ] 으로 컬럼 추출</p><li><p>[] -&gt; Series로 변환</p><li><p>[[]] -&gt; dataframe으로 반환</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">columns</span>
+</code></pre></div></div><pre>
+Index(['sepal length', 'sepal width', 'petal length', 'petal width'], dtype='object')
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">sepal length</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div><pre>
+0      5.1
+1      4.9
+2      4.7
+3      4.6
+4      5.0
+      ... 
+145    6.7
+146    6.3
+147    6.5
+148    6.2
+149    5.9
+Name: sepal length, Length: 150, dtype: float64
+</pre><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length</span><span class="sh">'</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<tbody><tr><th>0<td>5.1<tr><th>1<td>4.9<tr><th>2<td>4.7<tr><th>3<td>4.6<tr><th>4<td>5.0<tr><th>...<td>...<tr><th>145<td>6.7<tr><th>146<td>6.3<tr><th>147<td>6.5<tr><th>148<td>6.2<tr><th>149<td>5.9</table></div><p>150 rows × 1 columns</p></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">sepal length</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">sepal width</span><span class="sh">'</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<tbody><tr><th>0<td>5.1<td>3.5<tr><th>1<td>4.9<td>3.0<tr><th>2<td>4.7<td>3.2<tr><th>3<td>4.6<td>3.1<tr><th>4<td>5.0<td>3.6<tr><th>...<td>...<td>...<tr><th>145<td>6.7<td>3.0<tr><th>146<td>6.3<td>2.5<tr><th>147<td>6.5<td>3.0<tr><th>148<td>6.2<td>3.4<tr><th>149<td>5.9<td>3.0</table></div><p>150 rows × 2 columns</p></div><p>dataframe row 선택</p><ul><li><p>dataframe의 경우 []연산자는 컬럼(column) 선택, 하지만 슬라이싱(slicing)은 행(row) 선택</p><li><p>.loc(),iloc()로 행 선택 가능</p><li><p>.loc() : 인덱스 자체를 사용</p><li><p>.iloc() : 0 based 인덱스 사용</p></ul><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="nf">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>0<td>5.1<td>3.5<td>1.4<td>0.2<tr><th>1<td>4.9<td>3.0<td>1.4<td>0.2<tr><th>2<td>4.7<td>3.2<td>1.3<td>0.2<tr><th>3<td>4.6<td>3.1<td>1.5<td>0.2<tr><th>4<td>5.0<td>3.6<td>1.4<td>0.2<tr><th>5<td>5.4<td>3.9<td>1.7<td>0.4<tr><th>6<td>4.6<td>3.4<td>1.4<td>0.3<tr><th>7<td>5.0<td>3.4<td>1.5<td>0.2<tr><th>8<td>4.4<td>2.9<td>1.4<td>0.2<tr><th>9<td>4.9<td>3.1<td>1.5<td>0.1</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>0<td>5.1<td>3.5<td>1.4<td>0.2<tr><th>1<td>4.9<td>3.0<td>1.4<td>0.2<tr><th>2<td>4.7<td>3.2<td>1.3<td>0.2<tr><th>3<td>4.6<td>3.1<td>1.5<td>0.2<tr><th>4<td>5.0<td>3.6<td>1.4<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="n">df</span><span class="p">.</span><span class="nf">head</span><span class="p">()</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>100<td>5.1<td>3.5<td>1.4<td>0.2<tr><th>101<td>4.9<td>3.0<td>1.4<td>0.2<tr><th>102<td>4.7<td>3.2<td>1.3<td>0.2<tr><th>103<td>4.6<td>3.1<td>1.5<td>0.2<tr><th>104<td>5.0<td>3.6<td>1.4<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">100</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>100<td>5.1<td>3.5<td>1.4<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">30</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>130<td>4.8<td>3.1<td>1.6<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<th>petal length<th>petal width<tbody><tr><th>100<td>5.1<td>3.5<td>1.4<td>0.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">100</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">102</span><span class="p">],[</span><span class="sh">"</span><span class="s">sepal length</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">sepal width</span><span class="sh">"</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>sepal width<tbody><tr><th>100<td>5.1<td>3.5<tr><th>101<td>4.9<td>3.0<tr><th>102<td>4.7<td>3.2</table></div></div><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+</code></pre></div></div><div><style scoped=""> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }</style><div class="table-wrapper"><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th><th>sepal length<th>petal width<tbody><tr><th>100<td>5.1<td>0.2<tr><th>101<td>4.9<td>0.2<tr><th>102<td>4.7<td>0.2</table></div></div><hr><h2 class="text-delta">Table of contents</h2><ul></ul></main><hr><footer><p><a href="#top" id="back-to-top">Back to top</a></p><p class="text-small text-grey-dk-100 mb-0">Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href="https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt">MIT license.</a> <a href="https://www.netlify.com/">This site is powered by Netlify.</a></p><div class="d-flex mt-2"><p class="text-small text-grey-dk-000 mb-0"> <a href="https://github.com/just-the-docs/just-the-docs/tree/main/docs/6.Python/markdown/Pandas.md" id="edit-this-page">Edit this page on GitHub</a></p></div></footer></div></div><div class="search-overlay"></div></div><script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.6/dist/mermaid.min.js"></script> <script> var config = {} ; mermaid.initialize(config); window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid')); </script>
